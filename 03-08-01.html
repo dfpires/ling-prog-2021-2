@@ -1,0 +1,71 @@
+<!DOCTYPE html> <!-- cabeçalho do documento HTML 5-->
+<html> <!-- elemento raiz -->
+    <head> <!-- cabeçalho da página -->
+        <title> Calculadora do IMC </title> <!-- título da guia-->
+        <meta charset="utf-8"/> <!-- conteúdo (conjunto de caracteres é no idioma português do Brasil-->
+        <style>
+            /* estilo do corpo da página */
+            body{
+                width: 800px; /* largura da página em pixels */
+                margin: auto; /* espaçamento externo automático à esquerda e a direita */
+                border: 2px solid red; /* borda */
+                border-radius: 25px; /* borda arredondada */
+                margin-top: 50px; /* espaçamento externo superior */
+                padding: 20px; /* espaçamento interno nos quatro lados */
+            }
+            /* estilo do cabeçalho do main */
+            header {
+                margin-top: 10px; /* espaçamento externo superior */
+            }
+            main {
+                margin-top: 20px; /* espaçamento externo superior */
+            }
+            div {
+                margin-top: 20px;
+            }
+            input {
+                margin-left: 10px;
+            }
+        </style>
+    </head>
+    <body> <!-- corpo da página -->
+        <header> <!-- cabeçalho do corpo da página -->
+            Calculadora do IMC
+        </header>
+        <main> <!-- conteúdo principal da página -->
+            <div>
+                <label> Informe seu peso </label>
+                <input type="number" id="peso"/>
+            </div>
+            <div>
+                <label> Informe sua altura </label>
+                <input type="number" id="altura"/>
+            </div>
+            <div>
+                <button onClick="calcula()" type="button"> Calcular IMC </button>
+            </div>
+            <div>
+                <p id="imc"> </p> 
+            </div>
+        </main>
+        <footer> <!-- rodapé da página -->
+            Desenvolvido por alunos do 2o. ciclo de ADS da Fatec Franca - agosto de 2021
+        </footer>
+        <script>
+            function calcula(){
+               // vamos recuperar os dados do HTML
+               // percebam que a variável não tem tipo de dado - JS é não tipado
+               let peso = document.getElementById("peso").value // valor do elemento
+               let altura = document.getElementById("altura").value // valor do elemento
+                // processamento
+               let imc = peso / (altura ** 2) // operadores matemáticos -> ** é a potência
+               // o jeito antigo - concatenando strings
+               // alert("O seu IMC é de " + imc)
+               // mostra o resultado - estamos utilizando template string
+               // alert(`O seu IMC é de ${imc}`)
+                // colocar o resultado dentro da página
+               document.getElementById("imc").innerHTML = `O seu imc é ${imc.toFixed(2)}` // duas casas
+            }
+        </script>
+    </body>
+</html>
