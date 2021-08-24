@@ -116,3 +116,37 @@ function exe5(){
     }
     document.getElementById("resultado").innerHTML = resultado
 }
+
+function exe6(){
+     // entrada de dados
+     let nro1 = Number(document.getElementById("nro1").value)
+     let nro2 = Number(document.getElementById("nro2").value)
+     let opcao = document.getElementById("opcao").value
+     // processamento
+     let resultado // ele serve daqui para baixo
+     switch(opcao){
+         case 'a': resultado = `O valor é ${Math.pow(nro1, nro2)}` // exponenciação 
+                    break
+         case 'b': resultado = `O valor é ${Math.sqrt(nro1)} e ${Math.sqrt(nro2)}`
+                   break
+         case 'c': resultado = `O valor é ${Math.cbrt(nro1)} e ${Math.cbrt(nro2)}`
+                    break
+         default: resultado = `Valor inválido`
+     }
+     document.getElementById("resultado").innerHTML = resultado
+}
+
+function exe7(){
+     // entrada de dados
+     let salario = Number(document.getElementById("salario").value)
+     let aumento = 0
+    if (salario < 500){
+        aumento = (salario * 30) / 100
+    }
+    if (aumento == 0){
+        document.getElementById("resultado").innerHTML = `Não houve aumento`
+    }
+    else {
+        document.getElementById("resultado").innerHTML = `Aumento ${aumento} e salário reajustado: ${salario + aumento}`
+    }
+}
