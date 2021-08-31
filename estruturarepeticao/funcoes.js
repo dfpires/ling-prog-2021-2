@@ -17,7 +17,7 @@ function exe3(){
     let idade
     let f1 = 0; let f2 = 0; let f3 = 0; let f4 = 0; let f5 = 0;
     while (contador <= 8){
-        idade = Number(prompt(`Informe a idade ${i}`))
+        idade = Number(prompt(`Informe a idade ${contador}`))
         if (idade <= 15){
             f1++
         }
@@ -37,4 +37,28 @@ function exe3(){
     }
     alert(`Faixa 1: ${f1} Faixa 2: ${f2} Faixa 3: ${f3} Faixa 4: ${f4} Faixa 5: ${f5}`)
     alert(`Percentual da faixa 1 ${f1/8*100} Percentual da faixa 5 ${f5/8*100}`)
+}
+
+function exe6(){
+
+    let contador = 1
+    let valor
+    let codigo
+    let totalVista = 0
+    let totalPrazo = 0
+    while (contador <= 15){
+        valor = Number(prompt(`Informe o valor do produto ${contador}`))
+        // converte para maiúsculo
+        codigo = prompt(`Informe V para compra à vista e P para compra à prazo`).toUpperCase()  
+        switch(codigo){
+            case 'V': totalVista += valor
+                        break
+            case 'P': totalPrazo += valor
+                        break
+            default: alert(`Forma de pagamento inválido`)
+        }
+        contador++
+    }
+    alert(`Total à vista ${totalVista.toFixed(2)} Total à prazo ${totalPrazo.toFixed(2)} Total geral ${(totalVista + totalPrazo).toFixed(2)}`)
+    alert(`Primeira parcela do valor total à prazo ${(totalPrazo/3).toFixed(2)}`)
 }
