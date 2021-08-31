@@ -62,3 +62,22 @@ function exe6(){
     alert(`Total à vista ${totalVista.toFixed(2)} Total à prazo ${totalPrazo.toFixed(2)} Total geral ${(totalVista + totalPrazo).toFixed(2)}`)
     alert(`Primeira parcela do valor total à prazo ${(totalPrazo/3).toFixed(2)}`)
 }
+
+function exe23(){
+    let opcao
+    do {    
+        opcao = Number(prompt(`Digite \n1. Novo salário \n2. Férias \n3. Décimo terceiro \n4. Sair`))
+        switch(opcao){
+            case 1:
+                    break
+            case 2:
+                    break
+            case 3:
+                    break
+            case 4: alert(`O programa será encerrado`)
+                    break
+            default: alert(`Opção inválida`)
+        }
+    }
+    while (opcao != 4)
+}
