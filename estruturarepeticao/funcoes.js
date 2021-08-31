@@ -68,11 +68,25 @@ function exe23(){
     do {    
         opcao = Number(prompt(`Digite \n1. Novo salário \n2. Férias \n3. Décimo terceiro \n4. Sair`))
         switch(opcao){
-            case 1:
+            case 1: let salario = Number(prompt(`Informe o salário`))
+                    let novoSalario
+                    if (salario < 210){
+                        novoSalario = salario + (15*salario)/100
+                    }
+                    else if (salario <= 600){
+                        novoSalario = salario + (10*salario)/100
+                    }
+                    else {
+                        novoSalario = salario + (5*salario)/100
+                    }
+                    alert(`O novo salário é de ${novoSalario}`)
                     break
-            case 2:
+            case 2: let salario = Number(prompt(`Informe o salário`))
+                    alert(`As férias serão ${salario + salario/3}`)
                     break
-            case 3:
+            case 3: let salario = Number(prompt(`Informe o salário`))
+                    let meses = Number(prompt(`Informe qts meses foram trabalhados`))
+                    alert(`Décimo terceiro ${salario * meses/12}`)
                     break
             case 4: alert(`O programa será encerrado`)
                     break
