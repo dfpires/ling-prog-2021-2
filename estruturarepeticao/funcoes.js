@@ -129,3 +129,56 @@ function exe1(){
         alert(`Ordem decrescente ${d} ${c} ${b} ${a}`)
     }
 }
+
+function exe2(){
+    let qtde = 120
+    let lucro
+    let saida = ""
+    let maiorLucro = 0
+    let maiorQtde = 0
+    let maiorPreco = 0
+    for(let preco=5.0; preco >= 1.0; preco = preco - 0.50){
+        lucro = (preco * qtde) - 200 // calcula lucro
+        if (lucro > maiorLucro){
+            maiorLucro = lucro
+            maiorPreco = preco
+            maiorQtde = qtde
+        }
+        saida = saida + (`Preco: R$ ${preco} Qtde: ${qtde} Despesa: R$ 200,00 Lucro: R$ ${lucro}`) + "\n"
+        qtde = qtde + 26 // prepara para o cálculo do próximo lucro
+    }
+    alert(saida)
+    alert(`Maior lucro: R$ ${maiorLucro} Maior qtde: ${maiorQtde} Maior preço R$ ${maiorPreco}`)
+}
+
+function exe21(){
+    let opcao
+    let qtde1 = 0; let qtde2 = 0; let qtde3 = 0; let qtde4 = 0; let qtdeNulo = 0; let qtdeBranco = 0
+
+    do {
+        opcao = Number(prompt(`Informe \n1. Cand1 \n2. Cand2 \n3. Cand3 \n4. Cand4 \n5. Nulo \n6. Branco \n0. Sair`))
+        switch(opcao){
+            case 1: qtde1++; break
+            case 2: qtde2++; break
+            case 3: qtde3++; break
+            case 4: qtde4++; break
+            case 5: qtdeNulo++; break
+            case 6: qtdeBranco++; break
+            case 0: alert(`Encerrando as votaçõrs `); break
+            default: alert(`Opção inválida, tente novamente`)     
+        }
+    }
+    while (opcao != 0)
+}
+
+
+
+
+
+
+
+
+
+
+
+
