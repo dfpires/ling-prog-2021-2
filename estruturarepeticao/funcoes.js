@@ -158,9 +158,11 @@ function exe21(){
     do {
         opcao = Number(prompt(`Informe \n1. Cand1 \n2. Cand2 \n3. Cand3 \n4. Cand4 \n5. Nulo \n6. Branco \n0. Sair`))
         switch(opcao){
-            case 1: qtde1++; break
+            case 1: qtde1++ 
+                    break
             case 2: qtde2++; break
-            case 3: qtde3++; break
+            case 3: qtde3++ 
+                    break
             case 4: qtde4++; break
             case 5: qtdeNulo++; break
             case 6: qtdeBranco++; break
@@ -169,6 +171,9 @@ function exe21(){
         }
     }
     while (opcao != 0)
+    let total = qtde1 + qtde2 + qtde3 + qtde4 + qtdeBranco + qtdeNulo
+    alert(`Cand 1: ${qtde1} Cand 2: ${qtde2} Cand 3: ${qtde3} Cand 4: ${qtde4} Branco: ${qtdeBranco} Nulo: ${qtdeNulo}`)
+    alert(`% Branco: ${qtdeBranco/total*100} % Nulo: ${qtdeNulo/total*100}`)
 }
 
 
