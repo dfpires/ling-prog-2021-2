@@ -96,3 +96,36 @@ function exe23(){
     }
     while (opcao != 4)
 }
+
+function exe1(){
+    let a, b, c, d, aux // para troca
+
+    // conta de 1 até 5
+    for (let conta2=1;conta2<=5;conta2++){
+        a = Number(prompt(`Informe o valor de A`))
+        b = Number(prompt(`Informe o valor de B`))
+        c = Number(prompt(`Informe o valor de C`))
+        d = Number(prompt(`Informe o valor de D`))
+    
+        
+        for(let cont=1;cont <= 3; cont++) {
+            if (a > b){
+                aux = a
+                a = b
+                b = aux
+            }
+            if (b > c){
+                aux = b
+                b = c
+                c = aux
+            }
+            if (c > d){
+                aux = c
+                c = d
+                d = aux
+            }
+        }
+        alert(`Ordem crescente ${a} ${b} ${c} ${d}`)
+        alert(`Ordem decrescente ${d} ${c} ${b} ${a}`)
+    }
+}
