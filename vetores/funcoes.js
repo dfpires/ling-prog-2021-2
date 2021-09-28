@@ -20,6 +20,10 @@ function exe1(){
             impares.push(vetor[i])       
         }
     }
-    console.log(`Elementos pares ${pares}`)
-    console.log(`Elementos ímpares ${impares}`)
+    console.log(`Elementos pares ${pares} e qtde ${pares.length}`)
+    console.log(`Elementos ímpares ${impares} e qtde ${impares.length}`)
+}
+
+function exe2(){
+    
 }
