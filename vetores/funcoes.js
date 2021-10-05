@@ -58,3 +58,55 @@ function exe2(){
     alert(`Elementos múltiplo de 3: ${m3} e qtde ${m3.length}`)
     alert(`Elementos múltiplo de 2 e 3: ${m23} e qtde ${m23.length}`)
 }
+
+function exe3(){
+    // declaração dos vetores
+    let vetCodigos = []
+    let vetEstoque = []
+
+    // entrada de dados
+    for(let i=0;i<10;i++){
+        vetCodigos[i] = Number(prompt(`Informe o código do produto ${i+1}`))
+        vetEstoque[i] = Number(prompt(`Informe o estoque do produto ${i+1}`))
+    }
+
+    let cliente = Number(prompt(`Informe o código do cliente`))
+    do {
+        let codigoCompra = Number(prompt(`Informe o código do produto para compra`))
+        // verifica se o código
+        let achou = false // ela é false quando não encontrou o produto, e true quando encontrou
+        for(let i=0;i<10;i++){
+            if (codigoCompra == vetCodigos[i]){ // achou
+                achou = true
+                // atualiza estoque
+                let qtdeCompra = Number(prompt(`Informe a qtde da compra`))
+                if (vetEstoque[i] - qtdeCompra >= 0){ // tem estoque suficiente
+                    vetEstoque[i] = vetEstoque[i] - qtdeCompra
+                }
+                else {
+                    alert(`Qtde em estoque é insuficiente`)
+                }
+            }
+        }
+        if (!achou){ // não encontrou
+            alert(`Produto não comprado para venda`)
+        }
+
+        cliente = Number(prompt(`Informe o novo código do cliente. Digite 0 para encerrar`))
+    }
+    while(cliente != 0)
+    alert(`Estoque atualizado ${vetEstoque}`)
+}
+
+function exe4() {
+
+    // let vetor = [] // vetor com tamanho dinâmico
+    let vetor = new Array(15) // vetor com tamanho estático - fixado
+    let vetorR = []
+
+    for(let i=0;i<15;i++){
+        vetor[i] = Number(prompt(`Informe o valor do elemento ${i+1}`))
+    }
+    // construi o vetor resultante
+
+}
