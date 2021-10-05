@@ -144,15 +144,36 @@ function exe5(){
 
 function exe6() {
     // declaração dos vetores
-    let vetNomes = new Array(10) // operador new aloca espaço na memória
-    let vetVendas = new Array(10) // operador new aloca espaço na memória
-    let vetComissao = new Array(10) // operador new aloca espaço na memória
+    let vetNomes = new Array(5) // operador new aloca espaço na memória
+    let vetVendas = new Array(5) // operador new aloca espaço na memória
+    let vetComissao = new Array(5) // operador new aloca espaço na memória
 
-    for(let i=0;i<10;i++){
+    for(let i=0;i<5;i++){
         vetNomes[i] = prompt(`Informe o nome do vendedor ${i+1}`)
         vetVendas[i] = Number(prompt(`Informe o total de vendas do vendedor ${i+1}`))
         vetComissao[i] = Number(prompt(`Informe o % de comissão do vendedor ${i+1}`))
     }
+    let totalVendas = 0
+    let maior = 0
+    let nomeMaior = ""
+    let menor = 100000
+    let nomeMenor = ""
+    for(let i=0;i<5;i++){
+        let receber = (vetVendas[i] * vetComissao[i]) / 100 // calcular o valor a receber do vendedor
+        if (receber > maior){
+            maior = receber // atualizar valor maior
+            nomeMaior = vetNomes[i]
+        }
+        if (receber < menor){
+            menor = receber // atualizar valor menor
+            nomeMenor = vetNomes[i]
+        }
+        alert(`O vendedor ${vetNomes[i]} vai receber ${receber}`) // mostra o relatório
+        totalVendas = totalVendas + vetVendas[i] // calcula o total de vendas
+    }
 
-    
+    alert(`O total de vendas foi de ${totalVendas}`)
+    alert(`O maior valor a receber é ${maior} do vendedor ${nomeMaior}`)
+    alert(`O menor valor a receber é ${menor} do vendedor ${nomeMenor}`)
+
 }
