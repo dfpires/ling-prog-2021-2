@@ -141,3 +141,18 @@ function exe5(){
     }
     alert(`Alunos que fazem ambas as disciplinas ${interseccao}`)
 }
+
+function exe6() {
+    // declaração dos vetores
+    let vetNomes = new Array(10) // operador new aloca espaço na memória
+    let vetVendas = new Array(10) // operador new aloca espaço na memória
+    let vetComissao = new Array(10) // operador new aloca espaço na memória
+
+    for(let i=0;i<10;i++){
+        vetNomes[i] = prompt(`Informe o nome do vendedor ${i+1}`)
+        vetVendas[i] = Number(prompt(`Informe o total de vendas do vendedor ${i+1}`))
+        vetComissao[i] = Number(prompt(`Informe o % de comissão do vendedor ${i+1}`))
+    }
+
+    
+}
