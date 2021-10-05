@@ -108,5 +108,36 @@ function exe4() {
         vetor[i] = Number(prompt(`Informe o valor do elemento ${i+1}`))
     }
     // construi o vetor resultante
+    for(let i=0;i<15;i++){
+        if (vetor[i] == 30){
+            vetorR.push(i) // adicionamos a posição
+        }
+    }
+    alert(`As posições contendo elementos igual a 30 é ${vetorR}`)
+}
 
+function exe5(){
+
+    let vetLogica = new Array(15)
+    let vetLp = new Array(10)
+    let interseccao = []
+
+    // entrada de dados
+    for(let i=0;i<15;i++){
+        vetLogica[i] = Number(prompt(`Informe código de matrícula do aluno que faz Lógica`))
+    }
+     // entrada de dados
+     for(let i=0;i<10;i++){
+        vetLp[i] = Number(prompt(`Informe código de matrícula do aluno que faz Linguagem de Programação`))
+    }
+
+    // intersecção
+    for(let i=0;i<15;i++){ // percorre o vetor de lógica
+        for(let j=0;j<10;j++){// percorre o vetor de linguagem de programação
+            if (vetLogica[i] == vetLp[j]){
+                interseccao.push(vetLogica[i])
+            }
+        } 
+    }
+    alert(`Alunos que fazem ambas as disciplinas ${interseccao}`)
 }
