@@ -200,3 +200,36 @@ function exe8(){
     }
     alert(`Nome do aluno com maior média ${nomeMaiorMedia} com média ${maiorMedia}`)
 }
+
+function exe9(){
+    let vetNomes = new Array(10)
+    let vetCodigos = new Array(10)
+    let vetPrecos = new Array(10)
+    let vetNovos = new Array(10)
+    // leitura de dados
+    for(let i=0;i<10;i++){
+        vetNomes[i] = prompt(`Informe o nome do produto ${i+1}`)
+        vetCodigos[i] = Number(prompt(`Informe o código do produto ${i+1}`))
+        vetPrecos[i] = Number(prompt(`Informe o preço do produto ${i+1}`))
+    }
+    for(let i=0;i<10;i++){
+        if ((vetCodigos[i] % 2 == 0) && (vetPrecos[i] > 1000)) {
+            vetNovos[i] = vetPrecos[i] + (vetPrecos[i]*20/100)
+        }
+        else if (vetCodigos[i] % 2 == 0){
+            vetNovos[i] = vetPrecos[i] + (vetPrecos[i]*15/100)
+        }
+        else if (vetPrecos[i] > 1000){
+            vetNovos[i] = vetPrecos[i] + (vetPrecos[i]*10/100)
+        }
+        else {
+            vetNovos[i] = -1 // indica que não teve aumento
+        }
+    }
+    for(let i=0;i<10;i++){
+        if (vetNovos[i] != -1) {
+            alert(`Produto ${vetNomes[i]} com código ${vetCodigos[i]} tinha preço ${vetPrecos[i]} e terá novo preço ${vetNovos[i]}`)
+        }
+    }
+   
+}
