@@ -177,3 +177,26 @@ function exe6() {
     alert(`O menor valor a receber é ${menor} do vendedor ${nomeMenor}`)
 
 }
+
+function exe8(){
+    let vetNomes = new Array(7)
+    let vetMedias = new Array(7)
+
+    for(let i=0;i<7;i++){
+        vetNomes[i] = prompt(`Informe o nome do aluno ${i+1}`)
+        vetMedias[i] = Number(prompt(`Informe a média do aluno ${i+1}`))
+    }
+    // assume que o primeiro aluno tem a maior média
+    let nomeMaiorMedia = vetNomes[0]
+    let maiorMedia = vetMedias[0]
+    for(let i=0;i<7;i++){ // percorre o vetor
+        if (vetMedias[i] > maiorMedia){
+            maiorMedia = vetMedias[i]
+            nomeMaiorMedia = vetNomes[i]
+        }
+        if (vetMedias[i] < 7){
+            alert(`O aluno ${vetNomes[i]} está de exame e precisa tirar ${10 - vetMedias[i]}` )
+        }
+    }
+    alert(`Nome do aluno com maior média ${nomeMaiorMedia} com média ${maiorMedia}`)
+}
