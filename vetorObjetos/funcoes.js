@@ -217,10 +217,10 @@ function exe9(){
         if ((vetor[i].codigo % 2 == 0) && (vetor[i].preco > 1000)) {
             vetor[i].novo = vetor[i].preco + (vetor[i].preco*20/100)
         }
-        else if (vetCodigos[i] % 2 == 0){
+        else if (vetor[i].codigo % 2 == 0){
             vetor[i].novo = vetor[i].preco + (vetor[i].preco*15/100)
         }
-        else if (vetPrecos[i] > 1000){
+        else if (vetor[i].preco > 1000){
             vetor[i].novo = vetor[i].preco + (vetor[i].preco*10/100)
         }
         else {
@@ -229,7 +229,7 @@ function exe9(){
     }
     for(let i=0;i<10;i++){
         if (vetor[i].novo != -1) {
-            alert(`Produto ${vetor[i].nome} com código ${vetor[i].codigo} tinha preço ${vet[i].preco} e terá novo preço ${vetor[i].novo}`)
+            alert(`Produto ${vetor[i].nome} com código ${vetor[i].codigo} tinha preço ${vetor[i].preco} e terá novo preço ${vetor[i].novo}`)
         }
     }
    
