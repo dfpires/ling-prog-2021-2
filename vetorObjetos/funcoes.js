@@ -243,7 +243,7 @@ function exe1nl(){
     let vetVendedores = []
     let vetVendas = []
     do {
-        opcao = Number(prompt("Informe \n1. Cadastrar vendedor \n2. Cadastrar venda \n3. Mostra venda a partir de vendedor e mês \n4. Mostra total vendas a partir de um vendedor \n5. Sair"))
+        opcao = Number(prompt("Informe \n1. Cadastrar vendedor \n2. Cadastrar venda \n3. Mostra venda a partir de vendedor e mês \n4. Mostra total vendas a partir de um vendedor \n5. Maior Venda de um mês \n6. Mês com maior venda \n7. Sair"))
         switch(opcao){
             case 1: let objeto1 = {
                         codigo: prompt(`Informe o código do vendedor`),
@@ -314,10 +314,47 @@ function exe1nl(){
                         alert(`O total de vendas do vendedor ${codigoInteresse2} é ${soma}`)
                     }
                     break
-            case 5: alert("Finalizando o programa")
+            case 5: let mesInteresse2 = Number(prompt(`Informe o mês de interesse`))
+                    let maiorVenda = 0
+                    let quemVendeu = ""
+                    let achou5 = false
+                    for(let i=0;i<vetVendas.length;i++){
+                        if (vetVendas[i].mes == mesInteresse2){
+                            achou5 = true
+                            if (vetVendas[i].valor > maiorVenda){
+                                maiorVenda = vetVendas[i].valor
+                                quemVendeu = vetVendas[i].vendedor
+                            }
+                        }
+                    }
+                    if (achou5){
+                        alert(`O maior venda no mês ${mesInteresse2} foi de ${quemVendeu} no valor de ${maiorVenda}`)
+                    }
+                    else {
+                        alert(`Não existe venda no mês informado`)
+                    }
+                    break
+            case 6:
+                    let vendasMes = [0,0,0,0,0,0,0,0,0,0,0,0] // zero neutraliza a soma
+                    for(let i=0;i<vetVendas.length;i++){
+                        let posicao = vetVendas[i].mes - 1 // posição é no mês da venda - 1
+                        vendasMes[posicao] = vendasMes[posicao] + vetVendas[i].valor
+                    }
+                    // procurar o mês com maior venda
+                    let maiorVenda = 0
+                    let maiorMes = 0
+                    for(let i=0;i<vendasMes.length;i++){
+                        if (vendasMes[i] > maiorVenda){
+                            maiorVenda = vendasMes
+                            maiorMes = i + 1
+                        }
+                    }
+                    alert(`O mês ${maiorMes} teve a maior venda de ${maiorVenda}`)
+                    break
+            case 7: alert("Finalizando o programa")
                     break
             default: alert("Opção inválida")
         }
     }
-    while (opcao != 5)
+    while (opcao != 7)
 }
