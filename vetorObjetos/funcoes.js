@@ -237,3 +237,57 @@ function exe9(){
     }
    
 }
+
+function exe1nl(){
+    let opcao
+    let vetVendedores = []
+    let vetVendas = []
+    do {
+        opcao = Number(prompt("Informe \n1. Cadastrar vendedor \n2. Cadastrar venda \n3. Sair"))
+        switch(opcao){
+            case 1: let objeto1 = {
+                        codigo: prompt(`Informe o código do vendedor`),
+                        nome: prompt(`Informe o nome do vendedor`)    
+                    }
+                    // vamos percorrer vetor para encontrar código já existente
+                    let achou1 = false // se não encontrar, recebe false, caso encontre, recebe true
+                    // vetVendedores.length -> qtde de elementos no vetor
+                    for(let i=0;i<vetVendedores.length;i++){
+                        if (vetVendedores[i].codigo == objeto1.codigo){
+                            achou1 = true // encontramos um vendedor com este código
+                        }
+                    }
+                    if (achou1) {
+                        alert(`Já existe um vendedor com este código`)
+                    }
+                    else {
+                        vetVendedores.push(objeto1) // adiciona o vendedor no vetor
+                        alert(`Vendedor cadastrado com sucesso`)
+                    }
+                    break
+            case 2: let objeto2 = {
+                        vendedor: prompt(`Informe o código do vendedor`),
+                        mes: Number(prompt(`Informe o mês da venda`)),
+                        valor: Number(prompt(`Informe o valor da venda`))
+                    }
+                    let achou2 = false
+                    for(let i=0;i<vetVendas.length;i++){
+                        if ((vetVendas[i].vendedor == objeto2.vendedor) && (vetVendas[i].mes == objeto2.mes)){
+                            achou2 = true
+                        }
+                    }
+                    if (achou2){
+                        alert(`Já existe uma venda deste vendedor neste mês`)
+                    }
+                    else {
+                        vetVendas.push(objeto2)
+                        alert(`Venda cadastrada com sucesso`)
+                    }
+                    break
+            case 3: alert("Finalizando o programa")
+                    break
+            default: alert("Opção inválida")
+        }
+    }
+    while (opcao != 3)
+}
