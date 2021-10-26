@@ -243,7 +243,7 @@ function exe1nl(){
     let vetVendedores = []
     let vetVendas = []
     do {
-        opcao = Number(prompt("Informe \n1. Cadastrar vendedor \n2. Cadastrar venda \n3. Sair"))
+        opcao = Number(prompt("Informe \n1. Cadastrar vendedor \n2. Cadastrar venda \n3. Mostra venda a partir de vendedor e mês \n4. Sair"))
         switch(opcao){
             case 1: let objeto1 = {
                         codigo: prompt(`Informe o código do vendedor`),
@@ -284,10 +284,23 @@ function exe1nl(){
                         alert(`Venda cadastrada com sucesso`)
                     }
                     break
-            case 3: alert("Finalizando o programa")
+            case 3: let codigoInteresse = prompt(`Informe código do vendedor`)
+                    let mesInteresse = Number(prompt(`Informe mês de interesse`))
+                    let achou3 = false
+                    for(let i=0;i<vetVendas.length;i++){
+                        if ((vetVendas[i].vendedor == codigoInteresse) && (vetVendas[i].mes == mesInteresse)){
+                            alert(`O valor das vendas no mês ${mesInteresse} do funcionário ${codigoInteresse} é de ${vetVendas[i].valor}`)
+                            achou3 = true
+                        }
+                    }
+                    if (!achou3){
+                        alert(`Não foi encontrada venda para o vendedor ${codigoInteresse} no mês ${mesInteresse}`)
+                    }
+                    break
+            case 4: alert("Finalizando o programa")
                     break
             default: alert("Opção inválida")
         }
     }
-    while (opcao != 3)
+    while (opcao != 4)
 }
