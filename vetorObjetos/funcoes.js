@@ -270,18 +270,29 @@ function exe1nl(){
                         mes: Number(prompt(`Informe o mês da venda`)),
                         valor: Number(prompt(`Informe o valor da venda`))
                     }
-                    let achou2 = false
-                    for(let i=0;i<vetVendas.length;i++){
-                        if ((vetVendas[i].vendedor == objeto2.vendedor) && (vetVendas[i].mes == objeto2.mes)){
-                            achou2 = true
+                    let achou22 = false // verifica se o vendedor existe
+                    for(let i=0;i<vetVendedores.length;i++){
+                        if (vetVendedores[i].codigo == objeto2.vendedor){
+                            achou22 = true // existe
                         }
                     }
-                    if (achou2){
-                        alert(`Já existe uma venda deste vendedor neste mês`)
+                    if (!achou22){
+                        alert(`Vendedor não existe`)
                     }
                     else {
-                        vetVendas.push(objeto2)
-                        alert(`Venda cadastrada com sucesso`)
+                        let achou2 = false
+                        for(let i=0;i<vetVendas.length;i++){
+                            if ((vetVendas[i].vendedor == objeto2.vendedor) && (vetVendas[i].mes == objeto2.mes)){
+                                achou2 = true
+                            }
+                        }
+                        if (achou2){
+                            alert(`Já existe uma venda deste vendedor neste mês`)
+                        }
+                        else {
+                            vetVendas.push(objeto2)
+                            alert(`Venda cadastrada com sucesso`)
+                        }
                     }
                     break
             case 3: let codigoInteresse = prompt(`Informe código do vendedor`)
