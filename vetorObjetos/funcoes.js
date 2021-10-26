@@ -243,7 +243,7 @@ function exe1nl(){
     let vetVendedores = []
     let vetVendas = []
     do {
-        opcao = Number(prompt("Informe \n1. Cadastrar vendedor \n2. Cadastrar venda \n3. Mostra venda a partir de vendedor e mês \n4. Sair"))
+        opcao = Number(prompt("Informe \n1. Cadastrar vendedor \n2. Cadastrar venda \n3. Mostra venda a partir de vendedor e mês \n4. Mostra total vendas a partir de um vendedor \n5. Sair"))
         switch(opcao){
             case 1: let objeto1 = {
                         codigo: prompt(`Informe o código do vendedor`),
@@ -297,10 +297,27 @@ function exe1nl(){
                         alert(`Não foi encontrada venda para o vendedor ${codigoInteresse} no mês ${mesInteresse}`)
                     }
                     break
-            case 4: alert("Finalizando o programa")
+            case 4: 
+                    let codigoInteresse2 = prompt(`Informe código do vendedor`)
+                    let achou4 = false
+                    let soma = 0
+                    for(let i=0;i<vetVendas.length;i++){
+                        if ((vetVendas[i].vendedor == codigoInteresse2)){
+                            soma = soma + vetVendas[i].valor
+                            achou4 = true
+                        }
+                    }
+                    if (!achou4){
+                        alert(`Não foi encontrada venda para o vendedor ${codigoInteresse2}`)
+                    }
+                    else {
+                        alert(`O total de vendas do vendedor ${codigoInteresse2} é ${soma}`)
+                    }
+                    break
+            case 5: alert("Finalizando o programa")
                     break
             default: alert("Opção inválida")
         }
     }
-    while (opcao != 4)
+    while (opcao != 5)
 }
