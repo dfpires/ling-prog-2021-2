@@ -122,6 +122,27 @@ function calculaMesVendasCodigo(vetVendas, codigoInteresse){
         alert(`O total de vendas do vendedor ${codigoInteresse} é ${soma}`)
     }
 }
+
+function calculaMaiorVendaMes(vetVendas, mesInter){
+    let maiorVenda = 0
+    let quemVendeu = ""
+    let achou = false
+    for(let i=0;i<vetVendas.length;i++){
+        if (vetVendas[i].mes == mesInter){
+            achou = true
+            if (vetVendas[i].valor > maiorVenda){
+                maiorVenda = vetVendas[i].valor
+                quemVendeu = vetVendas[i].vendedor
+            }
+        }
+    }
+    if (achou){
+        alert(`O maior venda no mês ${mesInter} foi de ${quemVendeu} no valor de ${maiorVenda}`)
+    }
+    else {
+        alert(`Não existe venda no mês informado`)
+    }
+}
 function exe1nl(){
     let opcao
     let vetVendedores = []
@@ -141,25 +162,8 @@ function exe1nl(){
                     let codInteresse = prompt(`Informe código do vendedor`)
                     calculaMesVendasCodigo(vetVendas, codInteresse)
                     break
-            case 5: let mesInteresse2 = Number(prompt(`Informe o mês de interesse`))
-                    let maiorVenda = 0
-                    let quemVendeu = ""
-                    let achou5 = false
-                    for(let i=0;i<vetVendas.length;i++){
-                        if (vetVendas[i].mes == mesInteresse2){
-                            achou5 = true
-                            if (vetVendas[i].valor > maiorVenda){
-                                maiorVenda = vetVendas[i].valor
-                                quemVendeu = vetVendas[i].vendedor
-                            }
-                        }
-                    }
-                    if (achou5){
-                        alert(`O maior venda no mês ${mesInteresse2} foi de ${quemVendeu} no valor de ${maiorVenda}`)
-                    }
-                    else {
-                        alert(`Não existe venda no mês informado`)
-                    }
+            case 5: let mesInter = Number(prompt(`Informe o mês de interesse`))
+                    calculaMaiorVendaMes(vetVendas, mesInter)
                     break
             case 6:
                     let vendasMes = [0,0,0,0,0,0,0,0,0,0,0,0] // zero neutraliza a soma
