@@ -165,22 +165,7 @@ function exe1nl(){
             case 5: let mesInter = Number(prompt(`Informe o mês de interesse`))
                     calculaMaiorVendaMes(vetVendas, mesInter)
                     break
-            case 6:
-                    let vendasMes = [0,0,0,0,0,0,0,0,0,0,0,0] // zero neutraliza a soma
-                    for(let i=0;i<vetVendas.length;i++){
-                        let posicao = vetVendas[i].mes - 1 // posição é no mês da venda - 1
-                        vendasMes[posicao] = vendasMes[posicao] + vetVendas[i].valor
-                    }
-                    // procurar o mês com maior venda
-                    let maiorVenda2 = 0
-                    let maiorMes = 0
-                    for(let i=0;i<vendasMes.length;i++){
-                        if (vendasMes[i] > maiorVenda){
-                            maiorVenda2 = vendasMes
-                            maiorMes = i + 1
-                        }
-                    }
-                    alert(`O mês ${maiorMes} teve a maior venda de ${maiorVenda2}`)
+            case 6: calculaMesMaiorVenda(vetVendas)
                     break
             case 7: alert("Finalizando o programa")
                     break
@@ -188,4 +173,22 @@ function exe1nl(){
         }
     }
     while (opcao != 7)
+}
+
+function calculaMesMaiorVenda(vetVendas){
+    let vendasMes = [0,0,0,0,0,0,0,0,0,0,0,0] // zero neutraliza a soma
+    for(let i=0;i<vetVendas.length;i++){
+        let posicao = vetVendas[i].mes - 1 // posição é no mês da venda - 1
+        vendasMes[posicao] = vendasMes[posicao] + vetVendas[i].valor
+    }
+    // procurar o mês com maior venda
+    let maiorVenda = 0
+    let maiorMes = 0
+    for(let i=0;i<vendasMes.length;i++){
+        if (vendasMes[i] > maiorVenda){
+            maiorVenda = vendasMes[i]
+            maiorMes = i + 1
+        }
+    }
+    alert(`O mês ${maiorMes} teve a maior venda de ${maiorVenda}`)
 }
