@@ -39,28 +39,89 @@ console.log(vetor) // 11, 12, 13, 14, 15
 
 
 function cadastraVendedor(vetVendedores){
-    let objeto1 = {
+    let objeto = {
         codigo: prompt(`Informe o código do vendedor`),
         nome: prompt(`Informe o nome do vendedor`)    
     }
     // vamos percorrer vetor para encontrar código já existente
-    let achou1 = false // se não encontrar, recebe false, caso encontre, recebe true
+    let achou = false // se não encontrar, recebe false, caso encontre, recebe true
     // vetVendedores.length -> qtde de elementos no vetor
     for(let i=0;i<vetVendedores.length;i++){
-        if (vetVendedores[i].codigo == objeto1.codigo){
-            achou1 = true // encontramos um vendedor com este código
+        if (vetVendedores[i].codigo == objeto.codigo){
+            achou = true // encontramos um vendedor com este código
         }
     }
-    if (achou1) {
+    if (achou) {
         alert(`Já existe um vendedor com este código`)
     }
     else {
-        vetVendedores.push(objeto1) // adiciona o vendedor no vetor
+        vetVendedores.push(objeto) // adiciona o vendedor no vetor
         alert(`Vendedor cadastrado com sucesso`)
     }
 }
 
+function cadastraVenda(vetVendedores, vetVendas){
+    let objeto = {
+        vendedor: prompt(`Informe o código do vendedor`),
+        mes: Number(prompt(`Informe o mês da venda`)),
+        valor: Number(prompt(`Informe o valor da venda`))
+    }
+    let achou = false // verifica se o vendedor existe
+    for(let i=0;i<vetVendedores.length;i++){
+        if (vetVendedores[i].codigo == objeto.vendedor){
+            achou = true // existe
+        }
+    }
+    if (!achou){
+        alert(`Vendedor não existe`)
+    }
+    else {
+        achou = false
+        for(let i=0;i<vetVendas.length;i++){
+            if ((vetVendas[i].vendedor == objeto.vendedor) && (vetVendas[i].mes == objeto.mes)){
+                achou = true
+            }
+        }
+        if (achou){
+            alert(`Já existe uma venda deste vendedor neste mês`)
+        }
+        else {
+            vetVendas.push(objeto)
+            alert(`Venda cadastrada com sucesso`)
+        }
+    }
+}
 // Exercício 1 - transforme o case 1 em uma função
+function calculaMesVendasCodigoMes(vetVendas, codigoInteresse, mesInteresse){
+    console.log(`Entrou na função com 3 parâmetros`)
+    let achou = false
+    for(let i=0;i<vetVendas.length;i++){
+        if ((vetVendas[i].vendedor == codigoInteresse) && (vetVendas[i].mes == mesInteresse)){
+            alert(`O valor das vendas no mês ${mesInteresse} do funcionário ${codigoInteresse} é de ${vetVendas[i].valor}`)
+            achou = true
+        }
+    }
+    if (!achou){
+        alert(`Não foi encontrada venda para o vendedor ${codigoInteresse} no mês ${mesInteresse}`)
+    }
+}
+function calculaMesVendasCodigo(vetVendas, codigoInteresse){
+    console.log(`Entrou na função com 2 parâmetros`)
+    let achou = false
+    let soma = 0
+    for(let i=0;i<vetVendas.length;i++){
+        if ((vetVendas[i].vendedor == codigoInteresse)){
+            soma = soma + vetVendas[i].valor
+            achou = true
+        }
+    }
+    if (!achou){
+        alert(`Não foi encontrada venda para o vendedor ${codigoInteresse}`)
+    }
+    else {
+        alert(`O total de vendas do vendedor ${codigoInteresse} é ${soma}`)
+    }
+}
 function exe1nl(){
     let opcao
     let vetVendedores = []
@@ -70,65 +131,15 @@ function exe1nl(){
         switch(opcao){
             case 1: cadastraVendedor(vetVendedores)
                     break
-            case 2: let objeto2 = {
-                        vendedor: prompt(`Informe o código do vendedor`),
-                        mes: Number(prompt(`Informe o mês da venda`)),
-                        valor: Number(prompt(`Informe o valor da venda`))
-                    }
-                    let achou22 = false // verifica se o vendedor existe
-                    for(let i=0;i<vetVendedores.length;i++){
-                        if (vetVendedores[i].codigo == objeto2.vendedor){
-                            achou22 = true // existe
-                        }
-                    }
-                    if (!achou22){
-                        alert(`Vendedor não existe`)
-                    }
-                    else {
-                        let achou2 = false
-                        for(let i=0;i<vetVendas.length;i++){
-                            if ((vetVendas[i].vendedor == objeto2.vendedor) && (vetVendas[i].mes == objeto2.mes)){
-                                achou2 = true
-                            }
-                        }
-                        if (achou2){
-                            alert(`Já existe uma venda deste vendedor neste mês`)
-                        }
-                        else {
-                            vetVendas.push(objeto2)
-                            alert(`Venda cadastrada com sucesso`)
-                        }
-                    }
+            case 2: cadastraVenda(vetVendedores, vetVendas)
                     break
             case 3: let codigoInteresse = prompt(`Informe código do vendedor`)
                     let mesInteresse = Number(prompt(`Informe mês de interesse`))
-                    let achou3 = false
-                    for(let i=0;i<vetVendas.length;i++){
-                        if ((vetVendas[i].vendedor == codigoInteresse) && (vetVendas[i].mes == mesInteresse)){
-                            alert(`O valor das vendas no mês ${mesInteresse} do funcionário ${codigoInteresse} é de ${vetVendas[i].valor}`)
-                            achou3 = true
-                        }
-                    }
-                    if (!achou3){
-                        alert(`Não foi encontrada venda para o vendedor ${codigoInteresse} no mês ${mesInteresse}`)
-                    }
+                    calculaMesVendasCodigoMes(vetVendas, codigoInteresse, mesInteresse)
                     break
             case 4: 
-                    let codigoInteresse2 = prompt(`Informe código do vendedor`)
-                    let achou4 = false
-                    let soma = 0
-                    for(let i=0;i<vetVendas.length;i++){
-                        if ((vetVendas[i].vendedor == codigoInteresse2)){
-                            soma = soma + vetVendas[i].valor
-                            achou4 = true
-                        }
-                    }
-                    if (!achou4){
-                        alert(`Não foi encontrada venda para o vendedor ${codigoInteresse2}`)
-                    }
-                    else {
-                        alert(`O total de vendas do vendedor ${codigoInteresse2} é ${soma}`)
-                    }
+                    let codInteresse = prompt(`Informe código do vendedor`)
+                    calculaMesVendasCodigo(vetVendas, codInteresse)
                     break
             case 5: let mesInteresse2 = Number(prompt(`Informe o mês de interesse`))
                     let maiorVenda = 0
