@@ -1,0 +1,176 @@
+
+// função que não retorna nada
+function potencia(x, y){
+    console.log(Math.pow(x, y))
+}
+// função que retorna um valor
+function potencia2(x, y){
+    return Math.pow(x, y)
+}
+
+potencia(2, 3)
+console.log(potencia2(2, 3))
+
+// passagem de parâmetro por valor
+function soma10(a){
+    a = a + 10
+}
+
+let x = 50
+soma10(x)
+console.log(x) // qual o valor de x ?
+
+let a = 50
+soma10(a)
+console.log(a) // qual o valor de a ?
+
+// passagem de parâmetro por referência
+function soma10Vetores(a){
+    for(let i=0;i<a.length;i++){
+        a[i] = a[i] + 10
+    }
+}
+
+let vetor = [1, 2, 3, 4, 5]
+soma10Vetores(vetor) // a variável a recebe uma referência de vetor
+// o que for alterado em a, na verdade, será alterado em vetor
+console.log(vetor) // 11, 12, 13, 14, 15
+
+
+
+function cadastraVendedor(vetVendedores){
+    let objeto1 = {
+        codigo: prompt(`Informe o código do vendedor`),
+        nome: prompt(`Informe o nome do vendedor`)    
+    }
+    // vamos percorrer vetor para encontrar código já existente
+    let achou1 = false // se não encontrar, recebe false, caso encontre, recebe true
+    // vetVendedores.length -> qtde de elementos no vetor
+    for(let i=0;i<vetVendedores.length;i++){
+        if (vetVendedores[i].codigo == objeto1.codigo){
+            achou1 = true // encontramos um vendedor com este código
+        }
+    }
+    if (achou1) {
+        alert(`Já existe um vendedor com este código`)
+    }
+    else {
+        vetVendedores.push(objeto1) // adiciona o vendedor no vetor
+        alert(`Vendedor cadastrado com sucesso`)
+    }
+}
+
+// Exercício 1 - transforme o case 1 em uma função
+function exe1nl(){
+    let opcao
+    let vetVendedores = []
+    let vetVendas = []
+    do {
+        opcao = Number(prompt("Informe \n1. Cadastrar vendedor \n2. Cadastrar venda \n3. Mostra venda a partir de vendedor e mês \n4. Mostra total vendas a partir de um vendedor \n5. Maior Venda de um mês \n6. Mês com maior venda \n7. Sair"))
+        switch(opcao){
+            case 1: cadastraVendedor(vetVendedores)
+                    break
+            case 2: let objeto2 = {
+                        vendedor: prompt(`Informe o código do vendedor`),
+                        mes: Number(prompt(`Informe o mês da venda`)),
+                        valor: Number(prompt(`Informe o valor da venda`))
+                    }
+                    let achou22 = false // verifica se o vendedor existe
+                    for(let i=0;i<vetVendedores.length;i++){
+                        if (vetVendedores[i].codigo == objeto2.vendedor){
+                            achou22 = true // existe
+                        }
+                    }
+                    if (!achou22){
+                        alert(`Vendedor não existe`)
+                    }
+                    else {
+                        let achou2 = false
+                        for(let i=0;i<vetVendas.length;i++){
+                            if ((vetVendas[i].vendedor == objeto2.vendedor) && (vetVendas[i].mes == objeto2.mes)){
+                                achou2 = true
+                            }
+                        }
+                        if (achou2){
+                            alert(`Já existe uma venda deste vendedor neste mês`)
+                        }
+                        else {
+                            vetVendas.push(objeto2)
+                            alert(`Venda cadastrada com sucesso`)
+                        }
+                    }
+                    break
+            case 3: let codigoInteresse = prompt(`Informe código do vendedor`)
+                    let mesInteresse = Number(prompt(`Informe mês de interesse`))
+                    let achou3 = false
+                    for(let i=0;i<vetVendas.length;i++){
+                        if ((vetVendas[i].vendedor == codigoInteresse) && (vetVendas[i].mes == mesInteresse)){
+                            alert(`O valor das vendas no mês ${mesInteresse} do funcionário ${codigoInteresse} é de ${vetVendas[i].valor}`)
+                            achou3 = true
+                        }
+                    }
+                    if (!achou3){
+                        alert(`Não foi encontrada venda para o vendedor ${codigoInteresse} no mês ${mesInteresse}`)
+                    }
+                    break
+            case 4: 
+                    let codigoInteresse2 = prompt(`Informe código do vendedor`)
+                    let achou4 = false
+                    let soma = 0
+                    for(let i=0;i<vetVendas.length;i++){
+                        if ((vetVendas[i].vendedor == codigoInteresse2)){
+                            soma = soma + vetVendas[i].valor
+                            achou4 = true
+                        }
+                    }
+                    if (!achou4){
+                        alert(`Não foi encontrada venda para o vendedor ${codigoInteresse2}`)
+                    }
+                    else {
+                        alert(`O total de vendas do vendedor ${codigoInteresse2} é ${soma}`)
+                    }
+                    break
+            case 5: let mesInteresse2 = Number(prompt(`Informe o mês de interesse`))
+                    let maiorVenda = 0
+                    let quemVendeu = ""
+                    let achou5 = false
+                    for(let i=0;i<vetVendas.length;i++){
+                        if (vetVendas[i].mes == mesInteresse2){
+                            achou5 = true
+                            if (vetVendas[i].valor > maiorVenda){
+                                maiorVenda = vetVendas[i].valor
+                                quemVendeu = vetVendas[i].vendedor
+                            }
+                        }
+                    }
+                    if (achou5){
+                        alert(`O maior venda no mês ${mesInteresse2} foi de ${quemVendeu} no valor de ${maiorVenda}`)
+                    }
+                    else {
+                        alert(`Não existe venda no mês informado`)
+                    }
+                    break
+            case 6:
+                    let vendasMes = [0,0,0,0,0,0,0,0,0,0,0,0] // zero neutraliza a soma
+                    for(let i=0;i<vetVendas.length;i++){
+                        let posicao = vetVendas[i].mes - 1 // posição é no mês da venda - 1
+                        vendasMes[posicao] = vendasMes[posicao] + vetVendas[i].valor
+                    }
+                    // procurar o mês com maior venda
+                    let maiorVenda2 = 0
+                    let maiorMes = 0
+                    for(let i=0;i<vendasMes.length;i++){
+                        if (vendasMes[i] > maiorVenda){
+                            maiorVenda2 = vendasMes
+                            maiorMes = i + 1
+                        }
+                    }
+                    alert(`O mês ${maiorMes} teve a maior venda de ${maiorVenda2}`)
+                    break
+            case 7: alert("Finalizando o programa")
+                    break
+            default: alert("Opção inválida")
+        }
+    }
+    while (opcao != 7)
+}
