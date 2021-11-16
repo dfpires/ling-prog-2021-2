@@ -20,3 +20,14 @@ function entradaDados(vetor, matriz){
         }
     }
 }
+
+function calculaTotalVendas(vetor, matriz){
+    for(let i=0;i<4;i++){ // para cada carro
+        let soma = 0
+        for(let j=0;j<4;j++){
+            soma = soma + matriz[i][j]
+        }
+        alert(`O total de vendas do carro ${vetor[i].codigo} é ${soma}`)
+        vetor[i].totVendas = soma
+    }
+}
