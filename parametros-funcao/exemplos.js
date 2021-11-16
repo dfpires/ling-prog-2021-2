@@ -192,3 +192,39 @@ function calculaMesMaiorVenda(vetVendas){
     }
     alert(`O mês ${maiorMes} teve a maior venda de ${maiorVenda}`)
 }
+
+function exe1(vetorX, vetorA, vetorB){
+    for(let i=0;i<vetorX.length;i++){ // percorre o vetorX
+        if (vetorX[i] % 2 == 0){ // verifica se é par
+            vetorA.push(vetorX[i]) // colocar em vetorA
+        }
+        else {
+            vetorB.push(vetorX[i]) // colocar em vetorB
+        }
+    }
+}
+
+
+function exe1b(vetorX, vetorA, vetorB){
+    let a = 0
+    let b = 0
+    for(let i=0;i<vetorX.length;i++){ // percorre o vetorX
+        if (vetorX[i] % 2 == 0){ // verifica se é par
+            vetorA[a] = vetorX[i] // colocar em vetorA
+            a++
+        }
+        else {
+            vetorB[b] = vetorX[i] // colocar em vetorB
+            b++
+        }
+    }
+}
+
+function principal(){
+    let vetorX = [10, 11, 12, 13, 14, 15] 
+    let vetorA = []
+    let vetorB = []
+    exe1(vetorX, vetorA, vetorB)
+    console.log(vetorA)
+    console.log(vetorB)   
+}
